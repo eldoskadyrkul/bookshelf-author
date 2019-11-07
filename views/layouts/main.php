@@ -83,7 +83,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; <?= Yii::$app->name . ' ' . date('Y') ?></p>
-        <p class="pull-right"><a href="https://github.com/bjlag" target="_blank">Кадыркул Елдос</a></p>
+        <p class="pull-right"><a href="https://github.com/eldoskadyrkul" target="_blank">Кадыркул Елдос</a></p>
     </div>
 </footer>
 
