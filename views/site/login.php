@@ -16,37 +16,38 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div  class="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
+        <div class="col-md-8 col-lg-6">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-9 col-lg-8 mx-auto">
+                            <?php $form = ActiveForm::begin([
+                                'id' => 'login-form',
+                                'layout' => 'horizontal',
+                                'fieldConfig' => [
+                                    'template' => "{label}\n<div class=\"form-label-group\">{input}</div>\n<div class=\"form\">{error}</div>",
+                                    'labelOptions' => ['class' => ''],
+                                ],
+                            ]); ?>
+                            <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'class' => 'form-control']) ?>
 
-    <p>Пожалуйста, заполните поля формы для входа в личный кабинет:</p>
+                            <?= $form->field($model, 'password')->passwordInput(['class' => 'form-control']) ?>
 
-    <?php $form = ActiveForm::begin([
-        'id' => 'login-form',
-        'layout' => 'horizontal',
-        'fieldConfig' => [
-            'template' => "{label}\n<div class=\"col-lg-3\">{input}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            'labelOptions' => ['class' => 'col-lg-1 control-label'],
-        ],
-    ]); ?>
+                            <?= $form->field($model, 'rememberMe')->checkbox([
+                                'template' => "<div class=\"custom-control custom-checkbox mb-3\">{input} {label}</div>\n<div class=\"form-label-group\">{error}</div>",
+                            ]) ?>
 
-    <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+                            <?= Html::submitButton('Войти', ['class' => 'btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2', 'name' => 'login-button']) ?>
+                            <?php ActiveForm::end(); ?>
 
-    <?= $form->field($model, 'password')->passwordInput() ?>
 
-    <?= $form->field($model, 'rememberMe')->checkbox([
-        'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-    ]) ?>
-
-    <div class="form-group">
-        <div class="col-lg-offset-1 col-lg-11">
-            <?= Html::submitButton('Войти', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <?php ActiveForm::end(); ?>
-
-    <div class="col-lg-offset-1" style="color:#999;">
-        Для входа в личный кабинет вы можете использовать <strong>admin/admin</strong>.
     </div>
 </div>
